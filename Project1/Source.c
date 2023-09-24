@@ -9,7 +9,7 @@ int main()
     int m = 5;
     setlocale(LC_ALL, "RUS");
     
-    printf("%4.0f\n%5d\n__________\n\n%0+10.5f", n, L, n / L);
+    printf("%-4.0f\n%-5d\n__________\n\n%0+10.5f", n, L, n / L);
     
     return 0;
 }
