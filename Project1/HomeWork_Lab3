@@ -1,0 +1,21 @@
+#include<stdio.h>
+#include<locale.h>
+
+int main()
+{
+    setlocale(LC_ALL, "RUS");
+    double bit_0;
+    double Kbait_1;
+    
+    printf("Введите количество бит:\n");
+    scanf("%lf", &bit_0);
+    double Kbait_0 = (bit_0 / 1024) / 8;
+    printf("Это равно %.2lf Кбайт\n", Kbait_0);
+    
+    printf("Введите количество Кбайт:\n");
+    scanf("%lf", &Kbait_1);
+    double bit_1 = (Kbait_1 * 1024) * 8;
+    printf("Это равно %.2lf бит", bit_0);
+    
+    return 0;
+}
