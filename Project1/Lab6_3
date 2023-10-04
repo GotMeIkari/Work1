@@ -1,0 +1,13 @@
+#include <locale.h>
+#include <stdio.h>
+#include <math.h>
+
+void main() {
+	setlocale(LC_ALL, "RUS");
+	int minutes, hours;
+
+	printf("Введите количество минут (0-60) и часов(0-12): \n");
+	scanf("%d %d", &minutes, &hours);
+
+	minutes == hours * 5 ? printf("Время в минутах равно: %d!", minutes + hours * 60) : printf("Стрелки не находятся на одной линии!");
+}
