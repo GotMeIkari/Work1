@@ -1,0 +1,17 @@
+#include <locale.h>
+#include <stdio.h>
+
+void mainFour() {
+	setlocale(LC_ALL, "RUS");
+	int x;
+	int y;
+
+	printf("Введите x и y:\n");
+	scanf("%d", &x);
+	scanf("%d", &y);
+
+	if ((y == 1 && -6 <= x <= 7) || (y == 2 && -5.5 <= x <= 6.5) || (y == 3 && -5 <= x <= 6) || (y == 4 && -4.5 <= x <= 5.5) || (y == 5 && -4 <= x <= 5) || (y == 6 && -3.5 <= x <= 4.5) || (y == 7 && 3 <= x <= 4))
+		printf("\nТочки входят в диапазон!");
+	else 
+		printf("\nТочки не входят в диапазон!");
+}
