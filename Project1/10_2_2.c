@@ -1,15 +1,16 @@
 #include <stdio.h>
 #include <locale.h>
 #include <math.h>
+
 double sin(double x, int terms) {
 
     double result = 0;
     int n;
     for (n = 0; n < terms; n++) {
-        double coefficient = pow(-1, n);
-        double numerator = pow(x, 2 * n + 1);
-        double denominator = tgamma(2 * n + 2);
-        result += coefficient * (numerator / denominator);
+        double k = pow(-1, n);
+        double num = pow(x, 2 * n + 1);
+        double denom = tgamma(2 * n + 2);
+        result += k * (num / denom);
     }
 
     return result;
@@ -19,9 +20,9 @@ int main() {
     setlocale(LC_ALL, "RUS");
     double x;
     int n;
-    printf("Ââåäèòå óãîë x â ðàäèàíàõ: ");
-    scanf("%lf", &x);//0,5235987756 äëÿ 30 ãð
-    printf("Ââåäèòå êîëè÷åñòâî ÷ëåíîâ ðÿäà Òåéëîðà: ");
+    printf("Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã³Ã£Ã®Ã« x Ã¢ Ã°Ã Ã¤Ã¨Ã Ã­Ã Ãµ: ");
+    scanf("%lf", &x);//0,5235987756 Ã¤Ã«Ã¿ 30 Ã£Ã°
+    printf("Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ ÃªÃ®Ã«Ã¨Ã·Ã¥Ã±Ã²Ã¢Ã® Ã·Ã«Ã¥Ã­Ã®Ã¢ Ã°Ã¿Ã¤Ã  Ã’Ã¥Ã©Ã«Ã®Ã°Ã : ");
     scanf("%d", &n);//30
 
     printf("sin(%lf) = %lf\n", x, sin(x, n));
