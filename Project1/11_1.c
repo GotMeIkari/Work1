@@ -5,6 +5,7 @@
 
 int main()
 {
+    setlocale(LC_CTYPE, "RUS");
     float temp, average;
     float a[10];
     int b[10];
