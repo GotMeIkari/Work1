@@ -1,0 +1,71 @@
+#include <locale.h>
+#include <stdio.h>
+#include <stdlib.h>
+#define N 7
+#define M 7
+
+int rand_massive(int massive[N][M]);
+int transp_massive(int rez_massive[N][M], int massive[N][M]);
+
+int main()
+{
+    setlocale(LC_CTYPE, "RUS");
+    int massive[N][M];
+    int rez_massive[N][M];
+    
+    rand_massive(massive);
+    printf("\n");
+    transp_massive(rez_massive, massive);
+    printf("\n");
+    calculate_six(rez_massive, massive);
+}
+
+int rand_massive(int massive[N][M]) {
+    printf("ИСХОДНЫЙ МАССИВ\n");
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < M; j++) {
+            massive[i][j] = -10 + rand() % (10 - (-10) + 1);
+        }
+    }
+    
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < M; j++) {
+            printf("| %3d ", massive[i][j]);
+        }
+        printf("|\n");
+    }
+}
+
+int transp_massive(int rez_massive[N][M], int massive[N][M]) {
+    
+    printf("ТРАНСПОНИРОВАННЫЙ МАССИВ\n");
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < M; j++) {
+            rez_massive[i][j] = massive[j][i];
+        }
+    }
+    
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < M; j++) {
+            printf("| %3d ", rez_massive[i][j]);
+        }
+        printf("|\n");
+    }
+}
+
+int calculate_six(int rez_massive[N][M], int massive[N][M]) {
+    int summ_1[N], summ_2[N];
+    
+    for (int i = 4; i <= 4; i++) {
+        for (int j = 0;  j < M; j++) {
+            if (massive[i][j] % 3 == 0) {
+                summ_1[j] = massive[i][j];
+            }
+        }
+    }
+    
+    for (int i = 0; i < N; i++) {
+        printf("%d", summ_1[i]);
+        printf("\n");
+    }
+}
