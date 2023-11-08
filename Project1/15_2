@@ -8,7 +8,7 @@ int rand_massive(int massive[N][M]);
 int transp_massive(int rez_massive[N][M], int massive[N][M]);
 int calculate_six(int massive[N][M]);
 int equals_finder(int massive[N][M]);
-int
+int max_finder(int massive[N][M]);
 
 int main()
 {
@@ -24,6 +24,7 @@ int main()
     printf("\n");
     equals_finder(massive);
     printf("\n");
+    max_finder(massive);
 }
 
 int rand_massive(int massive[N][M]) {
@@ -84,4 +85,20 @@ int equals_finder(int massive[N][M]) {
         }
     }
     printf("Количество пар равных соседних эл-тов в столбцах равно: %d", equals_counter);
+}
+
+int max_finder(int massive[N][M]) {
+    int max_rez = massive[0][0];
+    int cord_x, cord_y;
+    
+    for (int i = 0; i < N; ++i) {
+        for (int j = 0; j < M; j++) {
+            if (max_rez < massive[i][j]) {
+                max_rez = massive[i][j];
+                cord_x = j;
+                cord_y = i;
+            }
+        }
+    }
+    printf("Наибольший элемент массива и его координаты: %3d | %3d | %3d", max_rez, cord_x, cord_y);
 }
