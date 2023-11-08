@@ -6,6 +6,9 @@
 
 int rand_massive(int massive[N][M]);
 int transp_massive(int rez_massive[N][M], int massive[N][M]);
+int calculate_six(int massive[N][M]);
+int equals_finder(int massive[N][M]);
+int
 
 int main()
 {
@@ -17,7 +20,10 @@ int main()
     printf("\n");
     transp_massive(rez_massive, massive);
     printf("\n");
-    calculate_six(rez_massive, massive);
+    calculate_six(massive);
+    printf("\n");
+    equals_finder(massive);
+    printf("\n");
 }
 
 int rand_massive(int massive[N][M]) {
@@ -53,19 +59,29 @@ int transp_massive(int rez_massive[N][M], int massive[N][M]) {
     }
 }
 
-int calculate_six(int rez_massive[N][M], int massive[N][M]) {
-    int summ_1[N], summ_2[N];
+int calculate_six(int massive[N][M]) {
+    int summ_rez = 0;
+    int counter = 0;
     
-    for (int i = 4; i <= 4; i++) {
-        for (int j = 0;  j < M; j++) {
-            if (massive[i][j] % 3 == 0) {
-                summ_1[j] = massive[i][j];
+    for (int j = 0;  j < M; j++) {
+        if (massive[4][j] % 3 == 0) {
+            summ_rez += massive[4][j];
+            counter++;
+        }
+    }
+
+    printf("Среднее арифметическое эл-тов четвёртой строки, кратных трём: %d", summ_rez / counter);
+}
+
+int equals_finder(int massive[N][M]) {
+    int equals_counter = 0;
+    
+    for (int i = 0; i < N - 1; i++) {
+        for (int j = 0; j < M; j++) {
+            if (massive[i][j] == massive[i + 1][j]) {
+                equals_counter++;
             }
         }
     }
-    
-    for (int i = 0; i < N; i++) {
-        printf("%d", summ_1[i]);
-        printf("\n");
-    }
+    printf("Количество пар равных соседних эл-тов в столбцах равно: %d", equals_counter);
 }
