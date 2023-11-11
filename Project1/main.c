@@ -71,8 +71,9 @@ void answer_peak(int gametablet[ROW][COL]) {
             gametablet[cord_i][cord_j] = rez_num;
         }
         else {
-            printf("Число неверное, попробуйте ещё раз!");
+            printf("Число неверное, попробуйте ещё раз!\n");
         }
+        break;
     default:
         break;
     }
@@ -90,11 +91,13 @@ void finish_flag() {
     }; /*указание начального игрового поля*/
 
     int game_over = 0;
-    int flag = 0;
-    int integer = 0;
+   
+    while (game_over != 1) {
+        int flag = 0;
+        int integer = 0;
 
-    while (integer < ROW - 1) {
-        switch (integer) {
+        while (integer < ROW - 1) {
+            switch (integer) {
             case 0:
                 for (int j = 0; j < COL; j++) {
                     if (game_tablet[0][j] == ROW_1[j]) flag += 1;
@@ -124,24 +127,26 @@ void finish_flag() {
                     if (game_tablet[4][j] == ROW_5[j]) flag += 1;
                 }
                 break;
+            }
+            integer++;
         }
-        integer++;
-    }
 
-    if (flag == 50) {
-        printf("Выйгрыш!");
-    }
+        if (flag == 50) {
+            game_over++;
+            printf("Выйгрыш!");
+        }
 
-    else {
-        draw_screen(game_tablet, ROW, COL);
-        /*функция отрисовки игрового поля
-        game_tablet - двумерный массив
-        height - высота поля (кол-во строк)
-        width - ширина поля (кол-во столбцов)*/
+        else {
+            draw_screen(game_tablet, ROW, COL);
+            /*функция отрисовки игрового поля
+            game_tablet - двумерный массив
+            height - высота поля (кол-во строк)
+            width - ширина поля (кол-во столбцов)*/
 
-        answer_peak(game_tablet);
-        /*функция выбора координаты на игровом поле
-        и числа для постановки его на поле и проверки
-        его на правильность ввода*/
+            answer_peak(game_tablet);
+            /*функция выбора координаты на игровом поле
+            и числа для постановки его на поле и проверки
+            его на правильность ввода*/
+        }
     }
 }
