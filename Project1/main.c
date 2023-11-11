@@ -94,39 +94,45 @@ void finish_flag() {
 
     while (integer < ROW - 1) {
         switch (integer) {
-        case 0:
-            for (int j = 0; j < COL; j++) {
-                if (game_tablet[0][j] == ROW_1[j]) flag += 1;
-            }
+            case 0:
+                for (int j = 0; j < COL; j++) {
+                    if (game_tablet[0][j] == ROW_1[j]) flag += 1;
+                }
+                break;
 
-        case 1:
-            for (int j = 0; j < COL; j++) {
-                if (game_tablet[1][j] == ROW_2[j]) flag += 1;
-            }
+            case 1:
+                for (int j = 0; j < COL; j++) {
+                    if (game_tablet[1][j] == ROW_2[j]) flag += 1;
+                }
+                break;
 
-        case 2:
-            for (int j = 0; j < COL; j++) {
-                if (game_tablet[2][j] == ROW_3[j]) flag += 1;
-            }
+            case 2:
+                for (int j = 0; j < COL; j++) {
+                    if (game_tablet[2][j] == ROW_3[j]) flag += 1;
+                }
+                break;
 
-        case 3:
-            for (int j = 0; j < COL; j++) {
-                if (game_tablet[3][j] == ROW_4[j]) flag += 1;
-            }
+            case 3:
+                for (int j = 0; j < COL; j++) {
+                    if (game_tablet[3][j] == ROW_4[j]) flag += 1;
+                }
+                break;
 
-        case 4:
-            for (int j = 0; j < COL; j++) {
-                if (game_tablet[4][j] == ROW_5[j]) flag += 1;
-            }
-        default:
-            break;
+            case 4:
+                for (int j = 0; j < COL; j++) {
+                    if (game_tablet[4][j] == ROW_5[j]) flag += 1;
+                }
+                break;
         }
         integer++;
     }
 
+    printf("%d", flag);
+
     if (flag == 50) {
         printf("Выйгрыш!");
     }
+
     else {
         draw_screen(game_tablet, ROW, COL);
         /*функция отрисовки игрового поля
