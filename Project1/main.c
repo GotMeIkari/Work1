@@ -15,6 +15,8 @@ void draw_screen(int game_tablet[ROW][COL], int, int);
 
 void answer_peak(int gametablet[ROW][COL]);
 
+void finish_flag(int gametablet[ROW][COL]);
+
 int main()
 {
     setlocale(LC_ALL, "RUS");
@@ -97,5 +99,31 @@ void answer_peak(int gametablet[ROW][COL]) {
         }
     default:
         break;
+    }
+}
+
+void finish_flag(int gametablet[ROW][COL]) {
+    int flag = 0;
+
+    for (int counter_Y = 0; counter_Y < ROW; counter_Y++) {
+        for (int counter_X = 0; counter_X < COL; counter_X++) {
+
+        }
+    }
+
+    if (flag == 50) {
+        printf("Выйгрыш!");
+    }
+    else {
+        draw_screen(game_tablet, height, width);
+        /*функция отрисовки игрового поля
+        game_tablet - двумерный массив
+        height - высота поля (кол-во строк)
+        width - ширина поля (кол-во столбцов)*/
+
+        answer_peak(game_tablet);
+        /*функция выбора координаты на игровом поле
+        и числа для постановки его на поле и проверки
+        его на правильность ввода*/
     }
 }
