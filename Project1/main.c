@@ -13,39 +13,89 @@
 void draw_screen(int game_tablet[ROW][COL], int, int);
 /*конструктор для структуры draw_screen*/
 
+void answer_peak(int gametablet[ROW][COL]);
+
 int main()
 {
     setlocale(LC_ALL, "RUS");
     const int height = ROW;
     const int width = COL;
-    /*указание размеров игрового поля для 
+    /*указание размеров игрового поля для
     передачи значений в функцию отрисовки */
-    
+
     int game_tablet[ROW][COL] = {
-        {5, -1, 0, -1, 7, -1, 1, -1, -1, -1}, 
-        {6, 8, 4, 9, -1, 5, -1, 2, 1, 0}, 
-        {-1, -1, -1, -1, 6, 1, -1, 5, -1, 9}, 
-        {-1, -1, -1, 4, -1, -1, 8, -1, 7, -1}, 
+        {5, -1, 0, -1, 7, -1, 1, -1, -1, -1},
+        {6, 8, 4, 9, -1, 5, -1, 2, 1, 0},
+        {-1, -1, -1, -1, 6, 1, -1, 5, -1, 9},
+        {-1, -1, -1, 4, -1, -1, 8, -1, 7, -1},
         {7, -1, 3, 5, -1, -1, 6, -1, 1, 9},
         {20, 23, 11, 28, 27, 12, 26, 27, 23, 28}
     }; /*указание начального игрового поля*/
-    
+
     draw_screen(game_tablet, height, width);
     /*функция отрисовки игрового поля
     game_tablet - двумерный массив
     height - высота поля (кол-во строк)
     width - ширина поля (кол-во столбцов)*/
+
+    answer_peak(game_tablet);
+    /*функция выбора координаты на игровом поле
+    и числа для постановки его на поле и проверки
+    его на правильность ввода*/
+
 }
 
 
 void draw_screen(int game_tablet[ROW][COL], int height, int width) {
+
+    for (int c = 0; c < width; c++) {
+        printf("  X%d ", c);
+    }
+    printf("\n");
+
     for (int i = 0; i < height; ++i) {
         printf("___________________________________________________");
         printf("\n");
-        
+
         for (int j = 0; j < width; j++) {
             printf("| %2d ", game_tablet[i][j]);
         }
-        printf("|\n");
+        printf("|");
+
+        if (i < 5) {
+            printf(" %Y%d ", i);
+        }
+
+        printf("\n");
+    }
+}
+
+void answer_peak(int gametablet[ROW][COL]) {
+    int cord_i, cord_j, rez_num;
+
+    printf("\n");
+    printf("Выберите координату X: ");
+    scanf("%d", &cord_j);
+    getchar();
+
+    printf("Выберите координату Y: ");
+    scanf("%d", &cord_i);
+    getchar();
+
+    printf("Выберите число, которое хотите вставить: ");
+    scanf("%d", &rez_num);
+    getchar();
+
+    switch (cord_i)
+    {
+    case 0:
+        if (rez_num == ROW_1[cord_j]) {
+            gametablet[cord_i][cord_j] = rez_num;
+        }
+        else {
+            printf("Число неверное, попробуйте ещё раз!");
+        }
+    default:
+        break;
     }
 }
