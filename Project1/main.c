@@ -71,9 +71,46 @@ void answer_peak(int gametablet[ROW][COL]) {
             gametablet[cord_i][cord_j] = rez_num;
         }
         else {
-            printf("Число неверное, попробуйте ещё раз!\n");
+            printf("Число неверное, попробуйте ещё раз!\n\n");
         }
         break;
+
+    case 1:
+        if (rez_num == ROW_2[cord_j]) {
+            gametablet[cord_i][cord_j] = rez_num;
+        }
+        else {
+            printf("Число неверное, попробуйте ещё раз!\n\n");
+        }
+        break;
+
+    case 2:
+        if (rez_num == ROW_3[cord_j]) {
+            gametablet[cord_i][cord_j] = rez_num;
+        }
+        else {
+            printf("Число неверное, попробуйте ещё раз!\n\n");
+        }
+        break;
+
+    case 3:
+        if (rez_num == ROW_4[cord_j]) {
+            gametablet[cord_i][cord_j] = rez_num;
+        }
+        else {
+            printf("Число неверное, попробуйте ещё раз!\n\n");
+        }
+        break;
+
+    case 4:
+        if (rez_num == ROW_5[cord_j]) {
+            gametablet[cord_i][cord_j] = rez_num;
+        }
+        else {
+            printf("Число неверное, попробуйте ещё раз!\n\n");
+        }
+        break;
+
     default:
         break;
     }
@@ -133,7 +170,7 @@ void finish_flag() {
 
         if (flag == 50) {
             game_over++;
-            printf("Выйгрыш!");
+            printf("\nВЫЙГРЫШ");
         }
 
         else {
