@@ -15,36 +15,12 @@ void draw_screen(int game_tablet[ROW][COL], int, int);
 
 void answer_peak(int gametablet[ROW][COL]);
 
-void finish_flag(int gametablet[ROW][COL]);
+void finish_flag();
 
 int main()
 {
     setlocale(LC_ALL, "RUS");
-    const int height = ROW;
-    const int width = COL;
-    /*указание размеров игрового поля для
-    передачи значений в функцию отрисовки */
-
-    int game_tablet[ROW][COL] = {
-        {5, -1, 0, -1, 7, -1, 1, -1, -1, -1},
-        {6, 8, 4, 9, -1, 5, -1, 2, 1, 0},
-        {-1, -1, -1, -1, 6, 1, -1, 5, -1, 9},
-        {-1, -1, -1, 4, -1, -1, 8, -1, 7, -1},
-        {7, -1, 3, 5, -1, -1, 6, -1, 1, 9},
-        {20, 23, 11, 28, 27, 12, 26, 27, 23, 28}
-    }; /*указание начального игрового поля*/
-
-    draw_screen(game_tablet, height, width);
-    /*функция отрисовки игрового поля
-    game_tablet - двумерный массив
-    height - высота поля (кол-во строк)
-    width - ширина поля (кол-во столбцов)*/
-
-    answer_peak(game_tablet);
-    /*функция выбора координаты на игровом поле
-    и числа для постановки его на поле и проверки
-    его на правильность ввода*/
-
+    finish_flag();
 }
 
 
@@ -102,20 +78,57 @@ void answer_peak(int gametablet[ROW][COL]) {
     }
 }
 
-void finish_flag(int gametablet[ROW][COL]) {
+void finish_flag() {
+
+    int game_tablet[ROW][COL] = {
+        {5, -1, 0, -1, 7, -1, 1, -1, -1, -1},
+        {6, 8, 4, 9, -1, 5, -1, 2, 1, 0},
+        {-1, -1, -1, -1, 6, 1, -1, 5, -1, 9},
+        {-1, -1, -1, 4, -1, -1, 8, -1, 7, -1},
+        {7, -1, 3, 5, -1, -1, 6, -1, 1, 9},
+        {20, 23, 11, 28, 27, 12, 26, 27, 23, 28}
+    }; /*указание начального игрового поля*/
+
     int flag = 0;
+    int integer = 0;
 
-    for (int counter_Y = 0; counter_Y < ROW; counter_Y++) {
-        for (int counter_X = 0; counter_X < COL; counter_X++) {
+    while (integer < ROW - 1) {
+        switch (integer) {
+        case 0:
+            for (int j = 0; j < COL; j++) {
+                if (game_tablet[0][j] == ROW_1[j]) flag += 1;
+            }
 
+        case 1:
+            for (int j = 0; j < COL; j++) {
+                if (game_tablet[1][j] == ROW_2[j]) flag += 1;
+            }
+
+        case 2:
+            for (int j = 0; j < COL; j++) {
+                if (game_tablet[2][j] == ROW_3[j]) flag += 1;
+            }
+
+        case 3:
+            for (int j = 0; j < COL; j++) {
+                if (game_tablet[3][j] == ROW_4[j]) flag += 1;
+            }
+
+        case 4:
+            for (int j = 0; j < COL; j++) {
+                if (game_tablet[4][j] == ROW_5[j]) flag += 1;
+            }
+        default:
+            break;
         }
+        integer++;
     }
 
     if (flag == 50) {
         printf("Выйгрыш!");
     }
     else {
-        draw_screen(game_tablet, height, width);
+        draw_screen(game_tablet, ROW, COL);
         /*функция отрисовки игрового поля
         game_tablet - двумерный массив
         height - высота поля (кол-во строк)
