@@ -89,6 +89,7 @@ void finish_flag() {
         {20, 23, 11, 28, 27, 12, 26, 27, 23, 28}
     }; /*указание начального игрового поля*/
 
+    int game_over = 0;
     int flag = 0;
     int integer = 0;
 
@@ -126,8 +127,6 @@ void finish_flag() {
         }
         integer++;
     }
-
-    printf("%d", flag);
 
     if (flag == 50) {
         printf("Выйгрыш!");
