@@ -41,7 +41,7 @@ void draw_screen(int game_tablet[ROW][COL], int height, int width) {
         printf("|");
 
         if (i < 5) {
-            printf(" %Y%d ", i);
+            printf(" Y%d ", i);
         }
 
         printf("\n");
@@ -52,21 +52,20 @@ void answer_peak(int gametablet[ROW][COL]) {
     int cord_i, cord_j, rez_num;
 
     printf("\n");
-    printf("Выберите координату X: ");
+    printf("Выберите координату X (0-9): ");
     scanf("%d", &cord_j);
     getchar();
 
-    printf("Выберите координату Y: ");
+    printf("Выберите координату Y (0-4): ");
     scanf("%d", &cord_i);
-    getchar();
-
-    printf("Выберите число, которое хотите вставить: ");
-    scanf("%d", &rez_num);
     getchar();
 
     switch (cord_i)
     {
     case 0:
+        printf("Выберите число, которое хотите вставить: ");
+        scanf("%d", &rez_num);
+        getchar();
         if (rez_num == ROW_1[cord_j]) {
             gametablet[cord_i][cord_j] = rez_num;
         }
@@ -76,6 +75,9 @@ void answer_peak(int gametablet[ROW][COL]) {
         break;
 
     case 1:
+        printf("Выберите число, которое хотите вставить: ");
+        scanf("%d", &rez_num);
+        getchar();
         if (rez_num == ROW_2[cord_j]) {
             gametablet[cord_i][cord_j] = rez_num;
         }
@@ -85,6 +87,9 @@ void answer_peak(int gametablet[ROW][COL]) {
         break;
 
     case 2:
+        printf("Выберите число, которое хотите вставить: ");
+        scanf("%d", &rez_num);
+        getchar();
         if (rez_num == ROW_3[cord_j]) {
             gametablet[cord_i][cord_j] = rez_num;
         }
@@ -94,6 +99,9 @@ void answer_peak(int gametablet[ROW][COL]) {
         break;
 
     case 3:
+        printf("Выберите число, которое хотите вставить: ");
+        scanf("%d", &rez_num);
+        getchar();
         if (rez_num == ROW_4[cord_j]) {
             gametablet[cord_i][cord_j] = rez_num;
         }
@@ -103,6 +111,9 @@ void answer_peak(int gametablet[ROW][COL]) {
         break;
 
     case 4:
+        printf("Выберите число, которое хотите вставить: ");
+        scanf("%d", &rez_num);
+        getchar();
         if (rez_num == ROW_5[cord_j]) {
             gametablet[cord_i][cord_j] = rez_num;
         }
@@ -112,6 +123,7 @@ void answer_peak(int gametablet[ROW][COL]) {
         break;
 
     default:
+        printf("Координата не входит в диапазон!\n\n");
         break;
     }
 }
