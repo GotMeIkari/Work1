@@ -1,0 +1,19 @@
+#include <locale.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+int index_finder(int *ptr_array, int n, int k);
+
+int main() {
+    int array[10] = {1, 51, 3, -44, 5, -68, 36, 44, 9, 102};
+    index_finder(array, 10, 5);
+}
+
+int index_finder(int *ptr_array, int n, int k) {
+    int imax = 0;
+    for (int i = k; i < n; i++) {
+        if (*(ptr_array + i) > *(ptr_array + i + 1)) imax = i;
+    }
+    printf("%d", imax);
+}
