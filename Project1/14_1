@@ -1,0 +1,40 @@
+#include <locale.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#define N 50
+
+double* full_elements(double *ptr_array, int n);/* - заполнение массива случайными значениями*/
+int put_elements(double *ptr_array, int n);/* - печать элементов массива*/
+double* int_elements(double *ptr_array, int n);/* - отбросить дробную часть у всех элементов массива*/
+
+int main() {
+    double array[N];
+    
+    int size;
+    printf("Введите размер массива > ");
+    scanf("%d", &size);
+    
+    full_elements(array, size);
+    put_elements(array, size);
+    printf("\n");
+    int_elements(array, size);
+}
+
+double* full_elements(double *ptr_array, int n) {
+    for (int i = 0; i < n; i++) {
+        *ptr_array++ = -10 + rand() % 41;
+    }
+}
+
+int put_elements(double *ptr_array, int n) {
+    for (int i = 0; i < n; i++) {
+        printf("%lf\t", *ptr_array++);
+    }
+}
+
+double* int_elements(double *ptr_array, int n) {
+    for (int i = 0; i < n; i++) {
+        printf("%d\t", (int) *ptr_array++);
+    }
+}
