@@ -1,0 +1,61 @@
+#include <locale.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#define N 50
+
+double* full_elements(double *ptr_array, int n);/* - заполнение массива случайными значениями*/
+int put_elements(double *ptr_array, int n);/* - печать элементов массива*/
+double* int_elements(double *ptr_array, int n);/* - отбросить дробную часть у всех элементов массива*/
+int sum_elements(double *ptr_array, int begin, int end);
+int find_element(double *ptr_array, int n, double element);
+
+int main() {
+    double array[N];
+    
+    int size;
+    printf("Введите размер массива > ");
+    scanf("%d", &size);
+    
+    full_elements(array, size);
+    put_elements(array, size);
+    printf("\n");
+    int_elements(array, size);
+    sum_elements(array, 0, 3);
+    find_element(array, size, -2);
+}
+
+double* full_elements(double *ptr_array, int n) {
+    for (int i = 0; i < n; i++) {
+        *ptr_array++ = -10 + rand() % 41;
+    }
+}
+
+int put_elements(double *ptr_array, int n) {
+    for (int i = 0; i < n; i++) {
+        printf("%.2lf\t", *ptr_array++);
+    }
+}
+
+double* int_elements(double *ptr_array, int n) {
+    for (int i = 0; i < n; i++) {
+        printf("%d\t", (int) *ptr_array++);
+    }
+}
+
+int sum_elements(double *ptr_array, int begin, int end) {
+    int sum=0;
+    for (int i=begin; i<end + 1; i++) {
+        sum+=*(ptr_array+i);
+    }
+    printf("\n%d", sum);
+}
+
+int find_element(double *ptr_array, int n, double element) {
+    double flag = -1;
+    
+    for (int i = 0; i < n; i++) {
+        if (*ptr_array++ == element) flag = element;
+    }
+    printf("\n%.2lf", flag);
+}
