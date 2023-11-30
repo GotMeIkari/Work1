@@ -1,0 +1,39 @@
+#include <locale.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h> 
+
+/*в порядке убывания мощности повреждённые мотоциклы*/
+
+struct motorcycle {
+    char brand;
+    int release_year;
+    int date_day, date_month, date_year;
+    int power;
+    int damage;
+};
+
+struct motorcycle motorcycles[4];
+typedef struct motorcycle Motor;
+
+int main() {
+    Motor one, two, three, four, five;
+    
+    one = (Motor) {'A', 2005, 11, 8, 2006, 1000, 0};
+    two = (Motor) {'B', 2010, 15, 2, 2011, 3000, 1};
+    three = (Motor) {'C', 2000, 9, 4, 2001, 1700, 1};
+    four = (Motor) {'A', 1985, 5, 1, 1985, 1000, 1};
+    five = (Motor) {'F', 2020, 23, 5, 2021, 500, 1};
+    
+    motorcycles[0] = one;
+    motorcycles[1] = two;
+    motorcycles[2] = three;
+    motorcycles[3] = four;
+    motorcycles[4] = five;
+    
+    for (int i = 0; i < 5; i++) {
+        if (motorcycles[i].damage == 1) {
+            printf("Power [%d] = %d\n", i, motorcycles[i].power);
+        }
+    }
+}
