@@ -1,0 +1,52 @@
+#include <locale.h>
+#include <math.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+struct point {
+    float x, y;
+    char name;
+};
+
+typedef struct point Point;
+
+void put_point(Point z);
+float dist(Point z, Point w);
+void new_point(Point z, Point w);
+void place_finder(Point z);
+
+int main() {
+    Point a, b;
+    
+    a = (Point) {1.f, 2.f, 'A'};
+    b.name = 'B'; b.x = 5; b.y = -3;
+    
+    printf("point %c (%.1f, %.1f)\n", b.name, b.x, b.y);
+    put_point(a);
+    dist(a, b);
+    new_point(a, b);
+    place_finder(b);
+}
+
+void put_point(Point z) {
+    printf("point %c (%.1f, %.1f)\n", z.name, z.x, z.y);
+}
+
+float dist(Point z, Point w) {
+    printf("%.1f\n", sqrt(pow(w.x - z.x, 2) + pow(w.y - z.y, 2)) );
+}
+
+void new_point(Point z, Point w) {
+    Point c;
+    c.name = 'C'; c.x = (z.x + w.x) / 2; c.y = (z.y + w.y) / 2;
+    
+    printf("point %c (%.1f, %.1f)\n", c.name, c.x, c.y);
+}
+
+void place_finder(Point z) {
+    if (z.x > 0 && z.y > 0) printf("Первая четверть\n");
+    if (z.x < 0 && z.y > 0) printf("Вторая четверть\n");
+    if (z.x < 0 && z.y < 0) printf("Третья четверть\n");
+    if (z.x > 0 && z.y < 0) printf("Четвертая четверть\n");
+    if (z.x == 0 && z.y == 0) printf("Центр окружности\n");
+}
