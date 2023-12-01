@@ -1,0 +1,58 @@
+#include <locale.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+
+double* full_elements(double *ptr_array, int n);
+double* int_elements(double *ptr_array, int n);
+int put_elements(double *ptr_array, int n);
+
+int main() {
+    setlocale(LC_CTYPE, "RUS");
+    
+    double array[50];
+    double *ptr_array;
+    int size;
+    
+    printf("Введите размеры массива: \n");
+    scanf("%d", &size);
+    
+    ptr_array = (double*)malloc(size * sizeof(double));
+    
+    if (ptr_array == NULL) {
+        puts("error");
+        return -1;
+    };
+    
+    full_elements(array, size);
+    
+    double array_new[50];
+    for (int i = 0; i < 50; i++) {
+        array_new[i] = array[i];
+    }
+    
+    int_elements(array_new, size);
+    printf("\n");
+    put_elements(array_new, size);
+    
+    free(ptr_array);
+}
+
+
+double* full_elements(double *ptr_array, int n) {
+    for (int i = 0; i < 50; i++) {
+        *ptr_array++ = -10 + rand() % 41;
+    }
+}
+
+double* int_elements(double *ptr_array, int n) {
+    for (int i = 0; i < n; i++) {
+        printf("%d\t", (int) *ptr_array++);
+    }
+}
+
+int put_elements(double *ptr_array, int n) {
+    for (int i = 0; i < n; i++) {
+        printf("%.2lf\t", *ptr_array++);
+    }
+}
