@@ -4,6 +4,7 @@
 
 void display_CC(double rez);
 void display_arifm(double number_one, double number_two, char arifm, double result);
+
 void binary(double rez);
 void oct(double rez);
 void hexa(double rez);
