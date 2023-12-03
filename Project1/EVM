@@ -1,0 +1,188 @@
+#include <locale.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+void display_CC(double rez);
+void display_arifm(double number_one, double number_two, char arifm, double result);
+void binary(double rez);
+void oct(double rez);
+void hexa(double rez);
+
+int main() {
+    setlocale(LC_CTYPE, "RUS");
+    
+    double number_one, number_two, result;
+    char arifm;
+    
+    printf("Введите первое число:");
+    scanf(" %lf", &number_one);
+    printf("Введите второе число:");
+    scanf(" %lf", &number_two);
+
+    printf("Введите арифметическую операцию:");
+    scanf(" %c", &arifm);
+    
+    
+    display_CC(number_one);
+    display_CC(number_two);
+    
+    switch (arifm)
+    {
+    case '+':
+        printf("\nСумма: \n");
+        result = number_one + number_two;
+        break;
+    case '-':
+        if (number_one < number_two) {
+            printf("Первое число меньше второго");
+            return -1;
+        }
+        printf("\nРазность: \n");
+        result = number_one - number_two;
+        break;
+    case '*':
+        printf("\nПроизведение: \n");
+        result = number_one * number_two;
+        break;
+    case '/':
+        printf("\nЧастное: \n");
+        result = number_one / number_two;
+        break;
+    default:
+        printf("\nТакой операции не существует\n");
+        return -1;
+        break;
+    }
+    
+    display_arifm(number_one, number_two, arifm, result);
+    return 0;
+}
+
+void binary(double rez) {
+    int i = 0;
+    int numbers_binary[32];
+    int mainType = (int)rez;
+    double secondaryType = rez - mainType;
+    
+    if (mainType == 0) printf("0");
+    else {
+        while (mainType > 0) {
+            numbers_binary[i] = mainType % 2;
+            mainType /= 2;
+            i++;
+        }
+        
+        for (int z = i - 1; z >= 0; z--) printf("%d", numbers_binary[z]);
+    }
+    printf(".");
+    
+    if (secondaryType == 0.0) printf("0");
+    else {
+        while (secondaryType > 0) {
+            secondaryType *= 2;
+            printf("%d", (int)secondaryType);
+            secondaryType -= (int)secondaryType;
+        }
+    }
+}
+
+void oct(double rez) {
+    int i = 1;
+    int rez_oct = 0;
+    int mainType = (int)rez;
+    double secondaryType = rez - mainType;
+    
+    if (mainType == 0) printf("0.");
+    else {
+        while (mainType != 0) {
+            rez_oct += (mainType % 8) * i;
+            mainType /= 8;
+            i *= 10;
+        }
+        
+        printf("%d.", rez_oct);
+    }
+    
+    i = 1;
+    if (secondaryType == 0.0) printf("0");
+    else {
+        while (secondaryType > 0) {
+            secondaryType *= 8;
+            printf("%d", (int)secondaryType);
+            secondaryType -= (int)secondaryType;
+            i *= 10;
+        }
+    }
+}
+
+void hexa(double rez) {
+    int i = 0;
+    int rez_hexa = 0;
+    char numbers_hex[20];
+    int mainType = (int)rez;
+    double secondaryType = rez - mainType;
+    
+    if (mainType == 0) printf("0.");
+    else {
+        while (mainType != 0) {
+            rez_hexa = mainType % 16;
+            if (rez_hexa < 10) numbers_hex[i++] = rez_hexa + 48;
+            else numbers_hex[i++] = rez_hexa + 55;
+            mainType /= 16;
+        }
+        
+        for (int z = i - 1; z >= 0; z--) printf("%c", numbers_hex[z]);
+    }
+    
+    if (secondaryType == 0.0) printf("0");
+    else {
+        while (secondaryType > 0) {
+            secondaryType *= 16;
+            rez_hexa = (int)secondaryType;
+            if (rez_hexa < 10) printf("%d", rez_hexa);
+            else printf("%c", rez_hexa + 55);
+            secondaryType -= rez_hexa;
+        }
+    }
+}
+
+void display_CC(double rez) {
+    printf("\nЧисло %lf в двоичной СС = ", rez);
+    binary(rez);
+    
+    printf("\nЧисло %lf в восьмеричной СС = ", rez);
+    oct(rez);
+    
+    printf("\nЧисло %lf в шестнадцатеричной СС = ", rez);
+    hexa(rez);
+    printf("\n");
+}
+
+void display_arifm(double number_one, double number_two, char arifm, double result) {
+    
+    printf("10СС %lf %c %lf = %lf\n", number_one, arifm, number_two, result);
+    
+    printf("2СС: ");
+    binary(number_one);
+    printf(" %c ", arifm);
+    binary(number_two);
+    printf("=");
+    binary(result);
+    printf("\n");
+    
+    printf("8СС: ");
+    oct(number_one);
+    printf(" %c ", arifm);
+    oct(number_two);
+    printf("=");
+    oct(result);
+    printf("\n");
+    
+    printf("16СС: ");
+    hexa(number_one);
+    printf(" %c ", arifm);
+    hexa(number_two);
+    printf("=");
+    hexa(result);
+    printf("\n");
+}
