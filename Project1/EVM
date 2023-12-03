@@ -16,12 +16,12 @@ int main() {
     
     printf("Введите первое число:");
     scanf(" %lf", &number_one);
-    printf("Введите второе число:");
-    scanf(" %lf", &number_two);
-
+    
     printf("Введите арифметическую операцию:");
     scanf(" %c", &arifm);
     
+    printf("Введите второе число:");
+    scanf(" %lf", &number_two);
     
     display_CC(number_one);
     display_CC(number_two);
@@ -29,23 +29,23 @@ int main() {
     switch (arifm)
     {
     case '+':
-        printf("\nСумма: \n");
+        printf("\nРезультаты вычислений: \n");
         result = number_one + number_two;
         break;
     case '-':
         if (number_one < number_two) {
-            printf("Первое число меньше второго");
+            printf("\nПервое число меньше второго. Вычисления невозможны!\n");
             return -1;
         }
-        printf("\nРазность: \n");
+        printf("\nРезультаты вычислений: \n");
         result = number_one - number_two;
         break;
     case '*':
-        printf("\nПроизведение: \n");
+        printf("\nРезультаты вычислений: \n");
         result = number_one * number_two;
         break;
     case '/':
-        printf("\nЧастное: \n");
+        printf("\nРезультаты вычислений: \n");
         result = number_one / number_two;
         break;
     default:
@@ -133,6 +133,7 @@ void hexa(double rez) {
         
         for (int z = i - 1; z >= 0; z--) printf("%c", numbers_hex[z]);
     }
+    printf(".");
     
     if (secondaryType == 0.0) printf("0");
     else {
@@ -166,7 +167,7 @@ void display_arifm(double number_one, double number_two, char arifm, double resu
     binary(number_one);
     printf(" %c ", arifm);
     binary(number_two);
-    printf("=");
+    printf(" = ");
     binary(result);
     printf("\n");
     
@@ -174,7 +175,7 @@ void display_arifm(double number_one, double number_two, char arifm, double resu
     oct(number_one);
     printf(" %c ", arifm);
     oct(number_two);
-    printf("=");
+    printf(" = ");
     oct(result);
     printf("\n");
     
@@ -182,7 +183,7 @@ void display_arifm(double number_one, double number_two, char arifm, double resu
     hexa(number_one);
     printf(" %c ", arifm);
     hexa(number_two);
-    printf("=");
+    printf(" = ");
     hexa(result);
     printf("\n");
 }
