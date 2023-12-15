@@ -1,0 +1,43 @@
+#include <locale.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <io.h>
+
+
+int main(void) {
+	setlocale(LC_CTYPE, "RUS");
+
+	double x, y;
+	int flag;
+	char tabulation[20] = "temp.txt";
+
+	FILE* out;
+	puts("Создание файла \n");
+
+	if ((out = fopen(tabulation, "wt")) == NULL) {
+		printf("Ошибка открытия файла для записи");
+		return 0;
+	}
+
+	/*printf("Запись в новый файл (1) или дозапись в существующий (2)?");
+	scanf("%d", &flag);
+
+	if (flag == 1) {
+		FILE* out;
+		puts("Создание файла \n");
+
+		if ((out = fopen(tabulation, "wt")) == NULL) {
+			printf("Ошибка открытия файла для записи");
+			return 0;
+		}
+	}*/
+
+	for (int x = 0.2; x < 2.3; x += 1) {
+		y = 1.8 * pow(x, 2) - sin(10 * x);
+		fprintf(out, "%.2lf", y);
+		fprintf(out, "%c", '\n');
+	}
+
+	fclose(out);
+	return 1;
+}
