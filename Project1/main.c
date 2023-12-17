@@ -17,10 +17,12 @@ void answer_peak(int gametablet[ROW][COL]);
 
 void finish_flag();
 
+void menu_peak();
+
 int main()
 {
     setlocale(LC_ALL, "RUS");
-    finish_flag();
+    menu_peak();
 }
 
 
@@ -140,7 +142,7 @@ void finish_flag() {
     }; /*указание начального игрового поля*/
 
     int game_over = 0;
-   
+
     while (game_over != 1) {
         int flag = 0;
         int integer = 0;
@@ -197,5 +199,33 @@ void finish_flag() {
             и числа для постановки его на поле и проверки
             его на правильность ввода*/
         }
+    }
+}
+
+void menu_peak() {
+    int menu_rez;
+
+    printf("ИГРА ЧИСЛОБУС\n\n");
+    printf("Выберите:\n");
+    printf("1 - начать игру.\n");
+    printf("2 - правила игры.\n");
+    printf("3 - выйти из игры.\n\n");
+
+    scanf("%d", &menu_rez);
+
+    switch (menu_rez) {
+    case 1:
+        printf("\n");
+        finish_flag();
+        break;
+    case 2:
+        printf("\nПРАВИЛА ИГРЫ");
+        break;
+    case 3:
+        printf("\nИгра окончена!");
+        break;
+    default:
+        printf("\nВведено неправильное число!");
+        break;
     }
 }
